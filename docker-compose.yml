@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  job-buddy-db:
+    container_name: job-buddy-db
+    image: mongo
+    environment:
+      - MONGO_INITDB_DATABASE=job-buddy
+    ports:
+      - 27017:27017
+    volumes:
+      - ./db:/data/db
+    restart: always
+
+  job-buddy-site:
+    container_name: job-buddy-site
+    build: .
+    environment:
+      - APP_NAME=job-buddy
+      - DATABASE_CLIENT=mongo
+      - DATABASE_HOST=job-buddy-db
+      - DATABASE_PORT=27017
+      - DATABASE_NAME=job-buddy
+      - DATABASE_USERNAME=
+      - DATABASE_PASSWORD=
+      - HOST=localhost
+      - NODE_ENV=${NODE_ENV:-production}
+    # ports:
+    #   - 1337:1337
+    volumes:
+      - ./job-buddy:/app/job-buddy
+    depends_on:
+      - job-buddy-db
+    restart: always
+    labels:
+      - traefik.frontend.rule=Host:site_perso.local
+  
+  job-buddy-traefik:
+    container_name: job-buddy-traefik
+    image: traefik
+    command: --api --docker # web UI and listen to docker
+    ports:
+      - 80:80     # HTTP port
+      - 8080:8080 # web UI (enabled by --api)
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # listen to docker events
