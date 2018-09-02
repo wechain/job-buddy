@@ -1,0 +1,62 @@
+{
+  "connection": "default",
+  "collectionName": "job",
+  "info": {
+    "name": "job",
+    "description": "Job schema"
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "position": {
+      "minLength": 3,
+      "type": "string",
+      "required": true
+    },
+    "location": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "responsibilities": {
+      "type": "text"
+    },
+    "requirements": {
+      "type": "text"
+    },
+    "salary": {
+      "type": "decimal"
+    },
+    "applyDescription": {
+      "type": "text"
+    },
+    "applyUrl": {
+      "type": "string"
+    },
+    "applyEmail": {
+      "type": "email"
+    },
+    "active": {
+      "default": true,
+      "type": "boolean"
+    },
+    "creationDate": {
+      "type": "date",
+      "required": true
+    },
+    "publicationDate": {
+      "type": "date"
+    },
+    "updateDate": {
+      "type": "date"
+    },
+    "unpublicationDate": {
+      "type": "date"
+    },
+    "company": {
+      "model": "company"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "defaultConnection": "default",
+  "connections": {
+    "default": {
+      "settings": {
+        "client": "mongo",
+        "host": "job-buddy-db",
+        "port": "27017",
+        "database": "job-buddy",
+        "username": "",
+        "password": ""
+      },
+      "options": {
+        "authenticationDatabase": "",
+        "ssl": false
+      },
+      "connector": "strapi-hook-mongoose"
+    }
+  }
+}

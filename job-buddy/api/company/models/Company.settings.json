@@ -1,0 +1,38 @@
+{
+  "connection": "default",
+  "collectionName": "company",
+  "info": {
+    "name": "company",
+    "description": "Company informations"
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "twitter": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "logo": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "password": {
+      "minLength": 5,
+      "type": "password",
+      "required": true
+    },
+    "undefined": {
+      "collection": "job",
+      "via": "company"
+    }
+  }
+}

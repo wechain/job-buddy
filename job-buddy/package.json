@@ -1,0 +1,53 @@
+{
+  "name": "job-buddy",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application.",
+  "main": "./server.js",
+  "scripts": {
+    "setup": "cd admin && npm run setup",
+    "start": "node_modules/strapi/bin/strapi.js start",
+    "strapi": "node_modules/strapi/bin/strapi.js",
+    "lint": "prettier --write '**/*.js'",
+    "postinstall": "node node_modules/strapi/lib/utils/post-install.js"
+  },
+  "dependencies": {
+    "husky": "^1.0.0-rc.13",
+    "lint-staged": "^7.2.2",
+    "lodash": "4.x.x",
+    "pm2": "^3.0.4",
+    "prettier": "1.7.4",
+    "strapi": "3.0.0-alpha.13.1",
+    "strapi-hook-mongoose": "3.0.0-alpha.13.1"
+  },
+  "author": {
+    "name": "Anthony Tarlao",
+    "url": "https://github.com/falkodev"
+  },
+  "strapi": {
+    "packageManager": "npm",
+    "uuid": "9518f797-93f6-4a2a-b7d2-ebb6444632fc"
+  },
+  "engines": {
+    "node": ">= 9.0.0",
+    "npm": ">= 5.0.0"
+  },
+  "license": "MIT",
+  "lint-staged": {
+    "*.js": [
+      "npm run lint:js -- ",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "prettier": {
+    "printWidth": 120,
+    "semi": false,
+    "trailingComma": "all",
+    "singleQuote": true
+  }
+}
