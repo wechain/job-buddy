@@ -91,7 +91,7 @@ lcov.info
 pids
 logs
 results
-node_modules
+**/node_modules/**
 .node_history
 
 
@@ -101,3 +101,8 @@ node_modules
 
 testApp
 coverage
+
+
+**/admin/admin/**
+**/plugins/**
+**/public/**
