@@ -106,3 +106,5 @@ coverage
 **/admin/admin/**
 **/plugins/**
 **/public/**
+.nuxt
+db

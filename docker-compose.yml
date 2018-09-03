@@ -12,8 +12,8 @@ services:
       - ./db:/data/db
     restart: always
 
-  job-buddy-site:
-    container_name: job-buddy-site
+  job-buddy-backend:
+    container_name: job-buddy-backend
     build: .
     environment:
       - APP_NAME=job-buddy
@@ -25,16 +25,27 @@ services:
       - DATABASE_PASSWORD=
       - HOST=localhost
       - NODE_ENV=${NODE_ENV:-production}
-    # ports:
-    #   - 1337:1337
+    ports:
+      - 1337:1337
     volumes:
       - ./job-buddy:/app/job-buddy
     depends_on:
       - job-buddy-db
     restart: always
+    
+  job-buddy-frontend:
+    container_name: job-buddy-frontend
+    build: client
+    volumes:
+      - ./client/pages:/app/pages
+    ports:
+      - 3333:3333
     labels:
       - traefik.frontend.rule=Host:site_perso.local
-  
+    environment:
+      NODE_ENV: ${NODE_ENV:-production}
+    restart: always
+    
   job-buddy-traefik:
     container_name: job-buddy-traefik
     image: traefik
