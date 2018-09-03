@@ -1,0 +1,18 @@
+{
+  "name": "job-buddy-client",
+  "version": "1.0.0",
+  "description": "Front part of the platform",
+  "main": "app.js",
+  "scripts": {
+    "dev:client": "nuxt"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Anthony Tarlao @falkodev",
+  "license": "MIT",
+  "dependencies": {
+    "nuxt": "^1.4.2"
+  }
+}
